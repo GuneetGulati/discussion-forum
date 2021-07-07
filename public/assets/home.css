@@ -1,0 +1,86 @@
+.homecss {
+  margin: 0;
+  padding: 0;
+}
+
+.bdy {
+  background: url("computer-desk-laptop-stethoscope-48604.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  top: 0;
+  left: 0;
+  max-width: 100%;
+  max-height: 100%;
+  background-position: center center;
+  font-family: "Open Sans", sans-serif;
+}
+
+.shift {
+  text-align: center;
+  color: #ccc;
+}
+
+#wel {
+  margin-top: 150px;
+  font-weight: 900;
+  color: white;
+  font-size: 75px;
+}
+
+#serc {
+  font-weight: 900;
+  color: white;
+  margin-top: 200px;
+  font-size: 36px;
+}
+
+#frm {
+  margin-top: 45px;
+}
+
+.insub {
+  width: 80%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  outline: #ccc;
+}
+
+.insub:hover {
+  border: 1px solid #ff033e;
+}
+
+.insub:focus {
+  border: 1px solid #ccc;
+}
+
+.gh-button {
+  display: inline-block;
+  width: 150px;
+  height: 45px;
+  padding: 8px;
+  margin-left: 5px;
+  border-radius: 4%;
+  color: #ff033e;
+  border: 1px solid #ff033e;
+  background-color: white;
+  text-align: center;
+  outline: none;
+  font-size: 17px;
+  text-decoration: none;
+  transition: background-color 0.2s ease-out, border-color 0.2s ease-out;
+}
+.gh-button:hover {
+  background-color: #e2093c;
+  border-color: #e2093c;
+  color: white;
+  transition: background-color 0.3s ease-in, border-color 0.3s ease-in;
+}
+
+.res {
+  color: #e2093c;
+}

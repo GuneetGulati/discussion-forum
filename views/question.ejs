@@ -1,0 +1,59 @@
+<%- include('./partials/header'); -%>
+<div class="container">
+  <div>
+    <h2>Q: <%=discussion.question%></h2>
+
+    <button class="btn btn-success" onclick="togle()" style="margin: 10px;">
+      Wanna Answer the Question
+    </button>
+    <div>
+      <form
+        action="/discussion/<%= discussion._id %>/"
+        method="POST"
+        id="scroll"
+        style="display: none;"
+      >
+        <input
+          style="width: 100%;"
+          type="text"
+          name="ans"
+          placeholder="Give Your Opinion"
+        /><br /><br />
+        <input type="submit" class="btn btn-primary" />
+      </form>
+    </div>
+
+    <% var x="success" %> <% discussion.answers.forEach(function(ans){ %>
+    <div style="padding: 15px 20px; margin: 30px;">
+      <h4><strong>Ans:</strong> <%= ans %></h4>
+      <input
+        class="btn btn-<%= x %>"
+        type="button"
+        id="updown"
+        value="Upvote"
+      />
+
+      <script>
+        function togle() {
+          var x = document.getElementById("scroll");
+          x.style.display === "none"
+            ? (x.style.display = "block")
+            : (x.style.display = "none");
+        }
+
+        var x = document.getElementById("updown");
+        if (x.classList === "btn btn-success") {
+          x.classList = "btn btn-danger";
+        } else {
+          x.classList = "btn btn-success";
+        }
+      </script>
+
+      <hr style="color: black;" />
+    </div>
+    <% }) %>
+  </div>
+
+  <h3><a href="/discussion">Go Back</a></h3>
+</div>
+<%- include('./partials/footer'); -%>

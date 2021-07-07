@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TB</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"
+    />
+    <link
+      src="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"
+    />
+    <link href="../public/assets/home.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div class="results">
+      <h3 class="res">Search results: <span><%= searchVal %></span></h3>
+      <h4>Displaying Total <span><%= numOfResults %></span> Results</h4>
+      <h4>Page<span><%= currentPage %></span> of <span><%= pages %></span></h4>
+    </div>
+
+    <div class="container" style="border-left: 1px black solid;">
+      <h1>Frequently asked Questions</h1>
+
+      <button class="btn btn-danger" onclick="togle()" style="margin: 10px;">
+        Ask a Question
+      </button>
+      <div>
+        <form
+          action="/discussion/pages/currentPage"
+          method="POST"
+          id="scroll"
+          style="display: none;"
+        >
+          <input
+            style="width: 100%;"
+            type="text"
+            name="ques"
+            placeholder="Wanna ask a Question"
+          /><br /><br />
+          <input type="submit" class="btn btn-primary" />
+        </form>
+      </div>
+
+      <div class="container">
+        <% discussion.forEach(function(discuss){ %>
+        <div
+          style="border: 1px grey solid; padding: 15px 20px; margin: 30px;"
+          id="disc"
+        >
+          <h2>Q: <%= discuss.question %></h2>
+          <a href="/discussion/<%= discuss._id %>">View discussion>>></a>
+        </div>
+
+        <% }) %>
+      </div>
+    </div>
+
+    <script>
+      function togle() {
+        var x = document.getElementById("scroll");
+        x.style.display === "none"
+          ? (x.style.display = "block")
+          : (x.style.display = "none");
+      }
+    </script>
+
+    <div class="shop-pagination">
+      <div class="pagination">
+        <% if (currentPage == 1 && pages > 1) { %>
+        <a
+          href="/discussion/pages/<%= parseInt(currentPage) + 1 %>/?search=<%=searchVal%>"
+        >
+          <span>
+            Page <%= parseInt(currentPage) + 1 %>
+            <ion-icon name="arrow-forward-outline"></ion-icon>
+          </span>
+        </a>
+        <% } else if (currentPage < pages) { %>
+        <a
+          href="/discussion/pages/<%= parseInt(currentPage) - 1 %>/?search=<%=searchVal%>"
+          ><span>
+            <ion-icon name="arrow-back-outline"></ion-icon>
+            Page <%= parseInt(currentPage) - 1 %>
+          </span>
+        </a>
+        <a
+          href="/discussion/pages/<%= parseInt(currentPage) + 1 %>/?search=<%=searchVal%>"
+          ><span>
+            Page <%= parseInt(currentPage) + 1 %>
+            <ion-icon name="arrow-forward-outline"></ion-icon>
+          </span>
+        </a>
+        <% } else if (currentPage == pages && pages > 1) { %>
+        <a
+          href="/discussion/pages/<%= parseInt(currentPage) - 1 %>/?search=<%=searchVal%>"
+          ><span>
+            <ion-icon name="arrow-back-outline"></ion-icon>Page
+            <%=parseInt(currentPage) - 1 %>
+          </span>
+        </a>
+        <% } %>
+      </div>
+    </div>
+  </body>
+</html>
